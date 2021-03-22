@@ -1,0 +1,3 @@
+Repository
+- menguasai dasar cpp
+- menguasai dasar python
