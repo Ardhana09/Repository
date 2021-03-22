@@ -1,3 +1,4 @@
 Repository
 - menguasai dasar cpp
 - menguasai dasar python
+- menguasai dasar java
