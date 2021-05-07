@@ -1,0 +1,969 @@
+import datetime
+import time
+import os
+import time, sys
+import random
+from typing import ByteString
+waktu = datetime.date.today()
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def Bergerak(s):
+    for c in s + '\n':
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        time.sleep(random.random() * 0.1)
+
+akun_daftar = {}
+daftar_perental = {}   
+rental_game = []
+
+akun =                                                                       { #ID
+        "Admin"     :                                                        { # <= Akun Admin
+                            "email"     :"kelompok13@gmail.com"             ,
+                            "nama"      :"Kelompok 13"                      ,
+                            "no_hp"     :"08235667889"                      ,
+                            "password"  :"admin"                            ,
+                            "member"    :"tidak ada"                        ,
+                            "pengguna"  :"Admin"                            }
+                                                                            }                                                                  
+
+kelas =                                                                      {
+        "VIP"              :                                                 { # <= Kelas VIP
+                            "diskon"     :"30%"                              ,
+                            "diskon2"    :0.30                               }
+                                                                            ,
+        "GOLD"             :                                                 { # <= Kelas GOLD
+                            "diskon"     :"20"                               ,
+                            "diskon2"    :0.20                               }
+                                                                            ,
+        "SILVER"          :                                                  { # <= Kelas Silver
+                            "diskon"      :"15%"                              ,
+                            "diskon2"     :0.15                               }
+                                                                            ,
+        "BRONZE"          :                                                  { # <= Kelas Bronze
+                            "diskon"      :"10%"                              ,
+                            "diskon2"     :0.10                               }
+                                                                            }   
+
+daftar_menu =                                                                {
+        1:                                                                   { # <= Menu XBOX 360
+                "namaPS"        :  "XBOX 360"                                ,
+                "harga"         :  "50000"                                   ,
+                "kaset"         :  7                                         ,
+                "tambahStik"    :  25000                                     ,
+                "tersedia"      :  5                                         ,
+                "game"          :                                           
+                                                                            [
+                                "WATCH DOGS"      ,     "FIFA 19"            ,
+                                "PES 2019"        ,     "COD: BLACK OPS 3"   ,
+                                "DEAD SPACE"      ,     "COD: GHOST"         ,
+                                "GTA V"           ,     "PUBG"               ,
+                                "NBE 2K19"        ,     "SIMS 4"             ,
+                                "HALO 4"          ,     "CITIES SKYLINES"    ,
+                                "THE LAST OF US"  ,     "EMPIER"             ,
+                                "FALLOUT 3"       ,     "INJUSTICE"          ,
+                                "GEARS OF WAR"    ,     "PORTAL 2"           ,
+                                "DESTINY"         ,     "DARK SOULS 2"       ]
+                                                                            
+                                                                            }
+                                                                            ,
+        2:                                                                   { # <= Menu PS4
+                "namaPS"        :  "PS4"                                     ,                                                                  
+                "harga"         :  "90000"                                   ,
+                "kaset"         :  5                                         ,
+                "tambahStik"    :  50000                                     ,
+                "tersedia"      :  5                                         ,
+                "game"          :                                            [
+                                "GOD OF WAR"        , "FIFA 20"              ,
+                                "PES 2020"          , "COD: MODERN 2"        ,
+                                "UNCHARTED 4"       , "PUBG"                 ,
+                                "GTA V"             , "READ DEAD  2"         ,
+                                "WWE 2K19"          , "WATCH DOGS 2"         ,
+                                "HORIZON ZERO DAWN" , "MORTAL KOMBAT 11"     ,
+                                "THE LAST OF US 2"  , "PERSONA 5"            ,
+                                "FALLOUT 4"         , "MONSTER HUNTER: WORLD",
+                                "DEATH STRANDING"   , "CTR: NITRO FUELED"    ,
+                                "ONE PUNCH MAN"     , "FORNITE"              ]
+                                                                            }
+                                                                            ,
+        3:                                                                   { # <= Menu PS3
+            "namaPS"            : "PS3"                                      ,
+            'harga'             : "40000"                                    ,
+            'kaset'             : 7                                          ,
+            'tambahStik'        : 25000                                      ,
+            'tersedia'          : 5                                          ,
+            'game'              :                                            [
+                                "GTA V"                , "GTA IV"            ,
+                                "THE LAST OF US"       , "COD: BLACK OPS 3"  ,
+                                "READ DEAD REDEMPTION" , "PERSONA 5"         ,
+                                "FIFA 19"              , "PES 2018"          ,
+                                "BATTLEFIELD 4"        , "GOD OF WAR 3"      ,
+                                "UNCHARTED 2"          , "UNCHARTED 3"       ,
+                                "FAR CRY 3"            , "INFAMOUS"          ,
+                                "ASSASSIN'S CREED 2"   , "ANGRY BIRD"        ,
+                                "DESTINY"              , "DARK SOULS"        ,
+                                "DIABLO 3"             , "TEKKEN 7"          ]
+                                                                            }
+                                                                            ,
+        4:                                                                   { # <= Menu Ps2
+            "namaPS"            : "PS2"                                      ,
+            'harga'             : "30000"                                    ,
+            'kaset'             : 10                                         ,
+            'tambahStik'        : 15000                                      ,
+            'tersedia'          : 5                                          ,
+            "game"              :                                           [
+                                "GTA: SA"         ,      "THE WARRIORS"      ,
+                                "MOTO GP 10"      ,      "GUITAR HERO"       ,
+                                "RESIDENT EVIL 4" ,      "BLACK"             ,
+                                "DOWNHILL"        ,      "MIDNIGHT CLUB 3"   ,
+                                "TIME CRISIS 2"   ,      "BASARA HEROES 2"   ,
+                                "PES 2019"        ,      "SNIPER ELITE"      ,
+                                "GOD OF WAR 2"    ,      "NARUTO SHIPPUDEN 5",
+                                "FIFA STREET 2"   ,      "TEKKEN 5"          ,
+                                "CRASH BANDICOT"  ,      "METAL GEAR"        ,
+                                "BULLY"           ,      "SILENT HILL"       ,
+                                "GOD HAND"        ,      "FAR CRY 2"         ,
+                                "BURNOUT 3"       ,      "SMACKDOWN"         ]
+                                                                            }
+                                                                            ,
+        5:                                                                   { # <= Menu XBOX ONE
+            "namaPS"            : "XBOX ONE"                                 ,
+            'harga'             : "100000"                                   ,
+            'kaset'             : 5                                          ,
+            'tambahStik'        : 50000                                      ,
+            'tersedia'          : 5                                          ,
+            'game'              :                                            [
+                                "FORNITE"            ,   "GTA V"             ,
+                                "FIFA 20"            ,   "NBA 2K20"          ,
+                                "BATTLEFIELD V"      ,   "ARK: SURVIVAL"     ,
+                                "FORZA HORIZON 4"    ,   "CALL OF DUTY"      ,
+                                "FALLOUT 4"          ,   "JUMP FORCE"        ,
+                                "ANTHEM"             ,   "READ DEAD  2"      ,
+                                "PUBG"               ,   "OVERWATCH"         ,
+                                "APEX LEGEND"        ,   "ROCKET LEAGUE"     ,
+                                "THE WITCHER 3"      ,   "THE SIMS 4"        ,
+                                "FAR CRY 5"          ,   "GEARS 5"           ]
+                                                                            }
+                                                                            } 
+
+#Menu Untuk Login
+def menu_awal():
+        clear_screen()
+        print("\t[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]")
+        print("\t[=]=========================================[=]")
+        print("\t[=]____________ SELAMAT DATANG DI __________[=]")
+        print("\t[=]_________________ RENTAL ________________[=]")
+        print("\t[=]____________ PLAYSTATION/XBOX ___________[=]")
+        print("\t[=]_________________ LINUX _________________[=]")
+        print("\t[=]=========================================[=]")
+        print("\t[=]  |    /_\   |     ^     |     Y     |   [=]")
+        print("\t[=]  |  []   O  |   <   >   |   X   B   |   [=]")
+        print("\t[=]  |     X    |     V     |     A     |   [=]")
+        print("\t[=]=========================================[=]")
+        print("\t[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]")
+        print("\t[=]=========================================[=]")    
+        print("\t[=]               => LOGIN <=               [=]")     
+        print("\t[=]=========================================[=]")
+        print("\t[=]                                         [=]")
+        print("\t[=] --> 1. DAFTAR USER                      [=]")
+        print("\t[=]                                         [=]")
+        print("\t[=] --> 2. MASUK                            [=]")
+        print("\t[=]                                         [=]")
+        print("\t[=] --> 3. EXIT                             [=]")
+        print("\t[=]                                         [=]")
+        print("\t[=]=========================================[=]")
+        print("\t[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]")
+        pilih = input("\t\tMasukkan pilihan [1/2/3]: ")
+        if pilih == "1":        #<= MENU DAFTAR SEBAGAI USER
+            clear_screen()
+            SIGNIN("User")
+        elif pilih == "2":      #<= MENU MASUK
+            login()
+        elif pilih == "3":      #<= MENU EXITNG PROGRAM
+            keluar_dari_program()
+        else:
+            print("\t\tinput yang anda masukkan salah!")
+            Bergerak("\t\tTunggu Sebentar ... ")
+            time.sleep(2)
+            clear_screen()
+            menu_awal()
+
+#Untuk Daftar Sebagai User
+def SIGNIN(namaus):
+    print("")
+    print("")
+    print("\t[=[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]=]")
+    print("\n\t  __________________ DAFTAR USER __________________")
+    print("")
+    ID = input("\t  Masukan ID anda        : ")
+    if ID in akun:
+        print("")
+        print("\t\tID sudah dipakai !!  ")
+        input("\t\tTekan Enter Untuk Kembali...")
+        clear_screen()
+        menu_awal()
+    else:
+        email = input("\t  Masukkan Email anda    : ")
+        passw = input("\t  Masukkan Password anda : ")
+        nama  = input("\t  Masukkan Nama anda     : ")
+        no_hp = input("\t  Masukkan nomor hp anda : +62")
+        akun.update({ID :{
+                        "email"    : email        ,
+                        "nama"     : nama.upper() ,
+                        "password" : passw        ,
+                        "no_hp"    : no_hp        ,
+                        "member"   : "tidak ada"  ,
+                        "pengguna" : namaus
+}})
+        print("\t  _________________________________________________")
+        print("")
+        print("\t[=[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]=]")
+        print("")
+        print("\n\tMohon Tunggu Sebentar..")
+        time.sleep(2)
+        print("")
+        Bergerak("\n\t   [=[=[=[=[=[=[ ID BERHASIL DI BUAT ]=]=]=]=]=]=]")
+        print("\t           => Sekarang Kamu Sebagai User <=        ")
+        print("")
+        input("\n\tTekan Enter untuk melanjutkan... ")
+        Bergerak("\tTunggu Sebentar....")
+        time.sleep(1.5)
+        clear_screen()
+        menu_awal()
+
+def daftaradmin(namaus):
+    clear_screen()
+    print("")
+    print("")
+    print("\t[=[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]=]")
+    print("\n\t  _________________ DAFTAR ADMIN __________________")
+    print("")
+    ID = input("\t  Masukan ID anda        : ")
+    if ID in akun:
+        print("")
+        print("\t\tID sudah dipakai !!  ")
+        input("\t\tTekan Enter Untuk Kembali...")
+        clear_screen()
+        menu_awal()
+    else:
+        email = input("\t  Masukkan Email anda    : ")
+        passw = input("\t  Masukkan Password anda : ")
+        nama  = input("\t  Masukkan Nama anda     : ")
+        no_hp = input("\t  Masukkan nomor hp anda : +62")
+        akun.update({ID :{
+                        "email"    : email        ,
+                        "nama"     : nama.upper() ,
+                        "password" : passw        ,
+                        "no_hp"    : no_hp        ,
+                        "member"   : "tidak ada"  ,
+                        "pengguna" : namaus
+}})
+        print("\t  _________________________________________________")
+        print("")
+        print("\t[=[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]=]")
+        print("")
+        print("\n\tMohon Tunggu Sebentar..")
+        time.sleep(2)
+        print("")
+        Bergerak("\n\t   [=[=[=[=[=[=[ ID BERHASIL DI BUAT ]=]=]=]=]=]=]")
+        print("\t         => Sekarang ID ini Sebagai Admin <=        ")
+        print("")
+        input("\n\tTekan Enter untuk melanjutkan... ")
+        Bergerak("\tTunggu Sebentar....")
+        time.sleep(1.5)
+        clear_screen()
+        menuAdmin()
+
+def login():
+    status = 0
+    while status <= 2:     #<= PERULANGAN, JIKA SALAH INPUT SAMPAI 3 KALI MAKA AKAN KEMBALI KE MENU
+        print("")
+        print("\t     _______________ MASUK ______________")
+        login = input("\t     Masukkan ID       : ")
+        pssw  = input("\t     Masukkan password : ")
+        if akun.get(login) != None and pssw == akun[login]['password'] and akun[login]['pengguna'] == "Admin":
+            print("\n\t\tMasuk ke menu admin\n")
+            input("\tTekan Enter Untuk Melanjutkan...")
+            clear_screen()
+            akun_daftar.update({login :{
+                    "nama"  :akun[login]["nama"],
+                    "no_hp" :akun[login]["no_hp"],
+                }})
+            menuAdmin()
+        elif akun.get(login) != None and pssw == akun[login]['password'] and akun[login]['pengguna'] == "User":
+            akun_daftar.update({login :{
+                    "nama"  :akun[login]["nama"],
+                    "no_hp" :akun[login]["no_hp"],
+                }})
+            Bergerak("\n\t\t==> ID berhasil di masukkan <==")
+            time.sleep(1.5)
+            menu()
+        else:
+            print("")
+            print("      ==> ID Atau Password Yang Anda Masukan Salah !! <==")
+            status+=1
+    else:
+        print("\n\t    Terjadi Kesalahan",status,"Kali, Kembali Ke Menu")
+        Bergerak("\t    Tunggu Sebentar...")
+        time.sleep(3)
+        menu_awal()
+
+def menu():
+    clear_screen()
+    print("\n")
+    print("\t[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]")
+    print("\t[=]                                           [=]")
+    print("\t[=]        SILAHKAN PILIH MENU DI BAWAH       [=]")
+    print("\t[=]                    |                      [=]")
+    print("\t[=]                   \ /                     [=]")
+    print("\t[=]                    V                      [=]")
+    print("\t[===============================================]")
+    print("\t[=] ______________ MENU USER ________________ [=]")
+    print("\t[=]|                                         |[=]")
+    print("\t[=]|--> 1. RENTAL PS/XBOX                    |[=]")
+    print("\t[=]|                                         |[=]")
+    print("\t[=]|--> 2. PENGEMBALIAN PS/XBOX              |[=]")
+    print("\t[=]|                                         |[=]")
+    print("\t[=]|--> 3. LIHAT DATA RENTAL ANDA            |[=]")
+    print("\t[=]|                                         |[=]")
+    print("\t[=]|--> 4. GANTI GAME PS/XBOX                |[=]")
+    print("\t[=]|                                         |[=]")
+    print("\t[=]|--> 5. INFO MEMBER                       |[=]")
+    print("\t[=]|                                         |[=]")
+    print("\t[=]|--> 6. LOG-OUT                           |[=]")
+    print("\t[=]|                                         |[=]")
+    print("\t[=]|--> 7. KELUAR DARI PROGRAM               |[=]")
+    print("\t[=]|_________________________________________|[=]")
+    print("\t[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]")
+    #PILIH MENU DI ATAS
+    pilihan = str(input("\t\tSilahkan pilih menu : "))
+    if pilihan == "1":
+        clear_screen()
+        for nama,isi in akun_daftar.items():
+#             PERENTAL HANYA DAPAT MERENTAL SATU PS/XBOX DENGAN SATU ID
+            if isi['nama'] not in daftar_perental.keys():
+                time.sleep(1)
+                rental()
+            else:
+                time.sleep(1.5)
+                print("\t[=]===============================================================================================[=]")
+                print("\t[=]------------------------ MAAF, ID ini sudah merental PS/XBOX ----------------------------------[=]")
+                print("\t[=]-- Silahkan kembalikan PS/XBOX yang anda rental terlebih dahulu untuk dapat merental kembali --[=]")
+                print("\t[=]===============================================================================================[=]")
+                
+                input("Tekan tombol enter untuk melanjutkan ...")
+                menu()
+    elif pilihan == "2":
+        kembalikanPS()
+    elif pilihan == "3":
+        lihatDataPerental()
+    elif pilihan == "4":
+        gantikaset()
+    elif pilihan == "5":
+        infoM()
+    elif pilihan == "6":
+        Bergerak("\ttunggu sebentar...")
+        time.sleep(1.2)
+        akun_daftar.clear()
+        print("\n\t[=[=[=[=[=[=[=[=[ BERHASIL LOG-OUT ]=]=]=]=]=]=]=]=]=]\n")
+        menu_awal()
+    elif pilihan == "7":
+        keluar_dari_program()
+    else:
+        print('\n\t======= MENU YANG ANDA PILIH TIDAK TERSEDIA =======')
+        print("\n\tTunggu Sebentar ...")
+        time.sleep(2)
+        menu()
+
+def rental():
+    global daftar_perental
+    global kelas
+    print('\n\t====================== DAFTAR PS/XBOX ======================\n')
+    for PS, dataRENTAL in daftar_menu.items():     #<= PERULANGAN UNTUK MENAMPILKAN DAFTAR PS/XBOX
+        print(f"\t{PS}. {dataRENTAL['namaPS']} - Rp.{dataRENTAL['harga']}/hari - tersedia: {dataRENTAL['tersedia']} - dapat 2 stik")
+    print('\n\t============================================================\n')
+    for id,data in akun_daftar.items():
+        member = akun[id]['member']
+        nama = data['nama']
+        no_hp = data['no_hp']
+        PSPilihan = int(input("\tPilih PS/XBOX yang ingin anda Rental : [1/2/3/4/5] : "))   #<= INPUT UNTUK MEMILIH INGIN MERENTAL PS/XBOX
+        if PSPilihan in list(daftar_menu.keys()):         #<= list(daftar_menu.keys()) = [1,2,3,4,5]
+            if daftar_menu[PSPilihan]['tersedia'] > 0:
+                lamaRental = int(input('\tSilahkan masukan berapa hari rental : '))
+                pilihanPS = daftar_menu[PSPilihan]['namaPS']
+                kasetPS = daftar_menu[PSPilihan]['kaset']
+                HargaStik = daftar_menu[PSPilihan]['tambahStik']
+                biayaRental = lamaRental * int(daftar_menu[PSPilihan]['harga'])       #<= ARITMATIKA PERKALIAN
+                print(f"\tMenambah stik {pilihanPS} akan mendapat tambahan sebesar Rp.{HargaStik}/Stik")
+                stik = input("\tApa anda ingin menambah stik? (y/n)? ")
+                if stik in ('y','Y'):
+                    stik2 = int(input("\tSilahkan Masukkan berapa stik yang di tambah: "))
+                    biayaRental = (stik2 * HargaStik) + biayaRental
+                    stik2 += 2
+                    Bergerak("\t[=[=[=[=[ TUNGGU SEBENTAR, DATA SEDANG DIPROSES ]=]=]=]=]")
+                    time.sleep(1.2)
+                x=1
+                print("\n\tLihat Menu Kaset Secara")
+                sorting(PSPilihan, pilihanPS)
+                print(f"\n\tPilih {kasetPS} Game Gratis Di atas untuk anda mainkan:")
+                while x<=kasetPS:
+                    kaset = input("\t{}. ".format(x))
+                    if kaset.upper() in daftar_menu[PSPilihan]["game"]:
+                        if kaset.upper() not in rental_game:
+                            rental_game.append(kaset.upper())       #<= MENAMBAH LIST
+                            x+=1
+                        else:
+                            print("\tGame ini sudah anda pilih")
+                    else:
+                        print("\tGame yang anda pilih tidak tersedia!")
+                Bergerak("\n\t[=[=[=[=[=[=[ MOHON TUNGGU, DATA GAME SEDANG DI PROSES... ]=]=]=]=]=]=]\n")
+                time.sleep(1.2)
+                banana = rental_game.copy()         #<= MENYALIN DATA DARI LIST
+                print(f"\n\t[=[=[=[=[ LIST GAME YANG ANDA PILIH ]=]=]=]=]")
+                for i in banana:
+                    print("\t  - {}".format(i))
+                input("\n\tSilahkan tekan enter untuk melanjutkan... ")
+                while True:
+                    tempat = input("\n\tApakah anda Bertempat tinggal Di Daerah Samarinda? (y/n)?")
+                    if tempat in ('y','Y'):
+                        alamat = input("\tSilahkan masukkan alamat lengkap anda: ")
+                        break
+                    elif tempat.upper() == "N":
+                        print ("\t------------ anda mendapat tambahan biaya ongkir -------------")
+                        print ("\tBiaya Ongkir Diluar Samarinda Sebesar Rp 20.000,-")
+                        biayaRental += 20000        #<= BIAYA ONGKIR SEBESAR Rp.20.000
+                        alamat = input("\tSilahkan masukkan kota serta alamat lengkap anda: ")
+                        break
+                    else:
+                        print("\tsalah input!".upper())
+                time.sleep(1.2)
+                print ("\n\t[=[=[ Total Harga yang harus di bayar Rp.{} ]=]=]".format(biayaRental))
+                time.sleep(1.2)
+                if member in list(kelas) :
+                    print(f"\t[=[=[=[ Selamat, karena anda member {member} anda mendapat diskon sebesar {kelas[member]['diskon']} ]=]=]=]")
+                    biayaRental -= biayaRental * kelas[member]["diskon2"]
+                    time.sleep(1.2)
+                    print ("\t[=[=[ Jadi, Total Harga Yang Harus Di Bayar Berkurang Menjadi Rp.{} ]=]=]".format(int(biayaRental)))
+                if member != list(kelas)[0] and biayaRental > 400000:          #<= List(kelas)[0] = VIP
+                    time.sleep(1)
+                    print("\t[=[=[ Selamat, Anda telah menjadi member VIP ]=]=]")
+                    akun[id]['member'] = 'VIP'       #<= MENGUBAH VALUE DARI KEY 'member' MENJADI VIP
+                elif member not in list(kelas)[0:2] and biayaRental > 300000:  #<= List(kelas)[0:2] = ['VIP','GOLD']
+                    time.sleep(1)
+                    print("\t[=[=[ Selamat, Anda telah menjadi member GOLD ]=]=]")
+                    akun[id]['member'] = 'GOLD'      #<= MENGUBAH VALUE DARI KEY 'member' MENJADI GOLD
+                elif member not in list(kelas)[0:3] and biayaRental > 200000:  #<= List(kelas)[0:3] = ['VIP','GOLD','SILVER']
+                    time.sleep(1)
+                    print("\t[=[=[ Selamat, Anda telah menjadi member SILVER ]=]=]")
+                    akun[id]['member'] = 'SILVER'    #<= MENGUBAH VALUE DARI KEY 'member' MENJADI SILVER
+                elif member not in list(kelas)[0:4] and biayaRental > 100000:  #<= List(kelas)[0:4] = ['VIP','GOLD','SILVER','BRONZE']
+                    time.sleep(1)
+                    print("\t[=[=[ Selamat, Anda telah menjadi member BRONZE ]=]=]")
+                    akun[id]['member'] = 'BRONZE'    #<= MENGUBAH VALUE DARI KEY 'member' MENJADI BRONZE
+                input("\n\ttekan enter untuk melanjutkan... ")
+                tanggalRental = waktu.day
+                bulanRental = waktu.month
+                tahunRental = waktu.year
+                Bergerak('\n\t[=[=[=[=[=[=[=[=[=[ MOHON TUNGGU, DATA SEDANG DIPROSES ]=]=]=]=]=]=]=]=]=]=]\n')
+                time.sleep(1.7)
+
+                print("       /========================= RENTAL PS/XBOX BERHASIL =======================\ ") 
+                print("      |========= SILAHKAN KIRIM PEMBAYARAN ANDA KE NOMOR REKENING BANK ===========|")
+                print("      |=============================== DI BAWAH INI ==============================|") 
+                print("       \=================== 2009106105 a/n ADAM ARDHANA PUTRA ===================/")
+
+                konfir = input("\n\tKonfirmasi pembayaran anda? (y/n)")
+                if konfir == "n":
+                    print("\n\t[=[=[=[=[ Anda Telah Membatalkan Pesanan ]=]=]=]=]")
+                    input("\n\tTekan Entee Untuk Kembali")
+                    print("\tMohon Tunggu Sebentar... ")
+                    time.sleep(2)
+                    rental_game.clear()
+                    menu()
+                    
+                else:
+                    daftar_perental[nama] = {    #<= MENAMBAH DICTIONARY
+                            'nama'         : nama,
+                            'ponsel'       : no_hp,
+                            'Rental'       : pilihanPS,
+                            'tanggalRental': tanggalRental,
+                            'bulanRental'  : bulanRental,
+                            'tahunRental'  : tahunRental,
+                            'lamaRental'   : lamaRental,
+                            'biayaRental'  : int(biayaRental),
+                            'nomor'        : PSPilihan,
+                            'rentalgame'   : banana,
+                            'alamat'       : alamat,
+                            'stik'         : stik,
+                            'member'       : akun[id]['member']
+            }
+                    rental_game.clear()    #<= MENGHAPUS SEMUA DATA DARI LIST Rentalgame
+                    daftar_menu[PSPilihan]['tersedia'] -= 1
+                    Bergerak("\t[=[=[ Pembayaran berhasil ]=]=]\n")
+                    print("\t _______________________________________________________________   ")
+                    print("\t|                    RENTAL PS/XBOX LINUX                       |  ")
+                    print("\t|_______________________________________________________________|  ")
+                    print(f"\t  Nama          : {nama}")
+                    print(f"\t  No_hp         : +62{no_hp}")
+                    print(f"\t  Alamat        : {alamat}")
+                    print(f"\t  Rental        : {pilihanPS}")
+                    print(f"\t  Tanggal Rental: {tanggalRental}-{bulanRental}-{tahunRental}")
+                    print(f"\t  Lama Rental   : {lamaRental} Hari")
+                    print(f"\t  Game          : {', '.join(banana)}")
+                    print("\t _______________________________________________________________   ")
+                    print(f"\t  Harga total   : Rp.{int(biayaRental)}")
+                    print("\t _______________________________________________________________   ")
+                    print("\t|                      ~~ TERIMA KASIH ~~                       |  ")
+                    print("\t|_______________________________________________________________|\n")
+                    input('\tTekan tombol enter untuk melanjutkan ...')
+                    menu()
+            else:
+                print("\n\t[=[=[=[=[=[=[=[=[ PS/XBOX YANG ANDA MINTA SUDAH HABIS ]=]=]=]=]=]=]=]=]")
+                input('Tekan tombol enter untuk melanjutkan ...')
+                rental()
+        else:
+            Bergerak("\n\t============> PS/XBOX YANG ANDA PILIH TIDAK TERSEDIA <=============")
+            time.sleep(1.2)
+            rental()
+
+def kembalikanPS():
+    global daftar_perental
+    global daftar_menu
+    Bergerak('\n\t[=[=[=[=[=[=[=[=[=[=[ MOHON TUNGGU SEBENTAR ]=]=]=]=]=]=]=]=]=]=]\n')
+    if len(daftar_perental) > 0:
+        time.sleep(1.2)
+        for name,ls in akun_daftar.items():
+            nama = ls['nama']
+            if nama.upper() in daftar_perental.keys():
+                data = daftar_perental[nama.upper()]
+                time.sleep(1.2)
+                dataperental(data)
+                kembali = input("\tApakah ini data rental anda? [y/n] \n\t")
+                if kembali in ('y','Y'):
+                    input('\tTekan tombol enter untuk melanjutkan proses pengembalian PS/XBOX...')
+                    daftar_menu[data['nomor']]['tersedia'] += 1
+                    del daftar_perental[nama.upper()]
+                    time.sleep(0.6)
+                    print('\n\t[=[=[=[=[=[=[=[=[ PS/XBOX TELAH DI KEMBALIKAN. TERIMA KASIH ]=]=]=]=]=]=]=]')
+                    input("\tTekan tombol enter untuk kembali ...")
+                    menu()
+                else:
+                    print('\n\tProses pengembalian PS/XBOX gagal')
+                    menu()
+            else:
+                print("\n\t[=[=[=[=[=[ DATA ANDA TIDAK TERSEDIA ]=]=]=]=]=]")
+                input('\tTekan tombol Enter untuk melanjutkan ...')
+                menu()
+    else:
+        time.sleep(1)
+        print('\n\t=========== ANDA BELUM MERENTAL PS/XBOX ==========')
+        time.sleep(2.2)
+        menu()
+
+def lihatDataPerental():
+    global daftar_perental
+    for name,ls in akun_daftar.items():
+        nama = ls['nama']
+        if nama.upper() in daftar_perental.keys():
+            data = daftar_perental[nama.upper()]
+            time.sleep(1.2)
+            dataperental(data)
+        else:
+            print('\n\t=========== ANDA BELUM MERENTAL PS/XBOX ==========')
+    input('\n\tTekan tombol enter untuk melanjutkan ...')
+    menu()
+
+def dataperental(data):
+    print('\n\t[=[=[=[=[=[=[=[=[=[=[ DATA PERENTAL PS/XBOX ]=]=]=]=]=]=]=]=]=]=]')
+    print("\n")
+    print(f"        NAMA           : {data['nama']}")
+    print(f"        PONSEL         : +62{data['ponsel']}")
+    print(f"        ALAMAT         : {data['alamat']}")
+    print(f"        RENTAL         : {data['Rental']}")
+    print(f"        STIK           : {data['stik']}")
+    print(f"        TANGGAL RENTAL : {data['tanggalRental']}-{data['bulanRental']}-{data['tahunRental']}")
+    print(f"        LAMA RENTAL    : {data['lamaRental']} hari")
+    print(f"        MEMBER         : {data['member']}")
+    print(f"        BIAYA RENTAL   : Rp.{data['biayaRental']}")
+    print(f"        KASET GAME     : {', '.join(data['rentalgame'])}")
+    print(f"        ____________________________________")
+
+def gantikaset():
+    global daftar_menu
+    global daftar_perental
+    global akun_daftar
+    for name,ls in akun_daftar.items():
+        nama = ls['nama']
+        if nama.upper() in daftar_perental.keys():
+            Bergerak("   [=[=[=[=[=[=[=[=[=[ MOHON TUNGGU SEBENTAR ]=]=]=]=]=]=]=]=]\n")
+            time.sleep(1.2)
+            print(f"\n\t[=[=[=[=[ LIST GAME YANG ANDA PILIH ]=]=]=]=]")
+            for id,nama in akun_daftar.items():
+                game = daftar_perental[nama['nama']]['rentalgame']
+                a = daftar_perental[nama['nama']]['nomor']
+                games = daftar_menu[a]['game']
+                PS = daftar_perental[nama['nama']]['Rental']
+                no=0
+                while no < 3:
+                    for i in game:
+                        print("\t  - {}".format(i))
+                    gnti = input("\n\tSilahkan Masukkan Game yang akan di ganti: ")
+                    if gnti.upper() in game:
+                        print(f"\n\t[=[=[=[=[ LIST GAME {PS} ]=]=]=]=]")
+                        for daftar in games:
+                            print(f"\t- {daftar}")
+                        while True:
+                            baru = input("\n\tSilahkan Masukkan game yang baru:  ")
+                            if baru.upper() in game:
+                                print("\tGame yang anda input sudah ada di list game anda")
+                            elif baru.upper() in games:
+                                game.remove(gnti.upper())
+                                game.append(baru.upper())
+                                break
+                            else:
+                                print("\tgame yang anda input tidak tersedia")
+                        print("\n\t[=[=[=[=[=[=[ GAME BERHASIL DI GANTI ]=]=]=]=]=]=]\n")
+                        res = input("\tapakah anda ingin mengganti Game lagi? (y/n)\n\t")
+                        if res.upper() == "Y":
+                            continue
+                        else:
+                            input("\tTekan enter untuk kembali ke menu...")
+                            menu()
+                    else:
+                        print("\tGame yang anda input tidak tersedia")
+                        no+=1
+                print("\n\tkembali ke menu..")
+                menu()
+        else:
+            print('\n    =========== SILAHKAN RENTAL PS/XBOX TERLEBIH DAHULU ==========')
+            menu()
+
+def infoM():
+    print('\n\t[=[=[=[=[=[=[=[ MOHON TUNGGU SEBENTAR ]=]=]=]=]=]=]=]\n')
+    time.sleep(1.5)
+    for id,isi in akun_daftar.items():
+        print("\n")
+        print(f"        NAMA          : {isi['nama']}")
+        print(f"        STATUS MEMBER : {akun[id]['member']}")
+    print("\n")
+    print("\t[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[ INFO MEMBER ]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]")
+    print("\t[=]                                                                                       [=]")
+    print("\t[=]-- 1. MEMBER VIP AKAN MENDAPAT DISKON SEBESAR 30% DAN UNTUK MENJADI MEMBER VIP --------[=]")
+    print("\t[=]----- ANDA HARUS MERENTAL PS/XBOX DENGAN HARGA TOTAL LEBIH DARI Rp.400.000 ------------[=]")
+    print("\t[=]                                                                                       [=]")
+    print("\t[=]-- 2. MEMBER GOLD AKAN MENDAPAT DISKON SEBESAR 20% DAN UNTUK MENJADI MEMBER GOLD ------[=]")
+    print("\t[=]----- ANDA HARUS MERENTAL PS/XBOX DENGAN HARGA TOTAL LEBIH DARI Rp.300.000 ------------[=]")
+    print("\t[=]                                                                                       [=]")
+    print("\t[=]-- 3. MEMBER SILVER AKAN MENDAPAT DISKON SEBESAR 15% DAN UNTUK MENJADI MEMBER SILVER --[=]")
+    print("\t[=]----- ANDA HARUS MERENTAL PS/XBOX DENGAN HARGA TOTAL LEBIH DARI Rp.200.000 ------------[=]")
+    print("\t[=]                                                                                       [=]")
+    print("\t[=]-- 4. MEMBER BRONZE AKAN MENDAPAT DISKON SEBESAR 10% DAN UNTUK MENJADI MEMBER BRONZE --[=]")
+    print("\t[=]----- ANDA HARUS MERENTAL PS/XBOX DENGAN HARGA TOTAL LEBIH DARI Rp.100.000 ------------[=]")
+    print("\t[=]                                                                                       [=]")
+    print("\t[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]\n")
+    
+    input("\ttekan enter untuk kembali ke menu...")
+    menu()
+
+def menuAdmin():
+    clear_screen()
+    print("\n")
+    print("\t[=]=======================================[=]")
+    print("\t[=] _____________ MENU ADMIN ____________ [=]")
+    print("\t[=]|                                     |[=]")
+    print("\t[=]|-- 1. Tambah Admin                   |[=]")
+    print("\t[=]|-- 2. Lihat Daftar Perental          |[=]")
+    print("\t[=]|-- 3. Lihat Daftar ID                |[=]")
+    print("\t[=]|-- 4. Hapus ID                       |[=]")
+    print("\t[=]|-- 5. Mencari File Kaset             |[=]")
+    print("\t[=]|-- 6. Catatan                        |[=]")
+    print("\t[=]|-- 7. Log-out                        |[=]")
+    print("\t[=]|-- 8. Keluar dari program            |[=]")
+    print("\t[=]|_____________________________________|[=]")
+    print("\t[=]=======================================[=]")
+    pilih = input("\tMasukkan pilih [1/2/3/4/5/6/7/8] : ")
+    while True:
+        if pilih == "1":
+            daftaradmin("Admin")
+        elif pilih == "2":
+            daftarperental()
+        elif pilih == "3":
+            lihat()
+        elif pilih == "4":
+            hapus()
+        elif pilih == "5":
+            search()
+        elif pilih == "6":
+            note()
+        elif pilih == "7":
+            Bergerak("\ttunggu sebentar...")
+            time.sleep(1.2)
+            akun_daftar.clear()
+            print("\n\t[=[=[=[=[=[=[=[=[ BERHASIL LOG-OUT ]=]=]=]=]=]=]=]=]=]\n")
+            menu_awal()
+        elif pilih == "8":
+            keluar_dari_program()
+        else:
+            print("\tYang Anda Inputkan Salah")
+            print("\tMohon Input Yang Benar")
+            input("\n\tTekan Enter Untuk Melanjutkan...")
+            menuAdmin()
+
+def lihat():
+    if len(akun) > 0:
+        print("\t...")
+        time.sleep(1.5)
+        print("\n\t========== LIST ID YANG TERDAFTAR ==========")
+        no =1
+        for id,nama in akun.items():
+            print("\n")
+            print(f"        {no}. ID    : {id}")
+            print(f"           Nama  : {nama['nama']}")
+            print(f"           Email : {nama['email']}")
+            print(f"           No HP : +62{nama['no_hp']}")
+            print(f"           Member: {nama['member']}")
+            print(f"           Status: {nama['pengguna']}\n\n")
+            no+=1
+        print("\t============================================")
+        input("\ttekan enter untuk melanjutkan....")
+        menuAdmin()
+    else:
+        print("\tBelum ada id yang terdaftar")
+        input("...")
+        menuAdmin()
+
+def hapus():
+    time.sleep(1.2)
+    print("\n\t========== LIST ID ==========")
+    no =1
+    for id,nama in akun.items():
+        print("\n")
+        print(f"    {no}. ID    : {id}")
+        print(f"       Nama  : {nama['nama']}")
+        print(f"       Email : {nama['email']}")
+        print(f"       No HP : +62{nama['no_hp']}")
+        print(f"       Member: {nama['member']}")
+        print(F"       Status: {nama['pengguna']}")
+        no+=1
+    print("\t============================================\n")
+    hps= input("\tSilahkan Masukkan ID yang ingin di hapus: ")
+    if hps in akun.keys():
+        del akun[hps]
+        print("\n\t[=[=[=[ ID BERHASIL DI HAPUS ]=]=]=]")
+        time.sleep(1.2)
+        menuAdmin()
+    else:
+        print("\n\tID yang anda masukkan tidak tersedia")
+        print("\n\t[=[=[=[ ID GAGAL DI HAPUS ]=]=]=]")
+        time.sleep(1)
+        menuAdmin()
+
+def daftarperental():
+    time.sleep(1)
+    if len(daftar_perental)!=0:
+        print("\n\t[=[=[=[=[=[=[=[ DAFTAR PERENTAL XBOX/PS ]=]=]=]=]=]=]=]")
+        no=1
+        for id,data in daftar_perental.items():
+            print("\n")
+            print(f"        {no}. NAMA           : {data['nama']}")
+            print(f"           PONSEL         : +62{data['ponsel']}")
+            print(f"           ALAMAT         : {data['alamat']}")
+            print(f"           RENTAL         : {data['Rental']}")
+            print(f"           STIK           : {data['stik']}")
+            print(f"           TANGGAL RENTAL : {data['tanggalRental']}-{data['bulanRental']}-{data['tahunRental']}")
+            print(f"           LAMA RENTAL    : {data['lamaRental']} hari")
+            print(f"           MEMBER         : {data['member']}")
+            print(f"           BIAYA RENTAL   : Rp.{data['biayaRental']}")
+            print(f"           KASET GAME     : {', '.join(data['rentalgame'])}")
+            print(f"          ____________________________________________________________")
+            no+=1
+        input("\n\tTekan enter untuk kembali ke menu... ")
+        menuAdmin()
+    else:
+        print("\n\t[=[=[=[=[=[ DAFTAR PERENTAL KOSONG ]=]=]=]=]=]\n")
+        menuAdmin()
+
+def keluar_dari_program():
+    status = 0
+    while status <= 2:
+        print("\n\tApakah Anda Yakin Ingin Keluar Dari Aplikasi ? ")
+        kembali = input("\tMasukan Pilihan yes/no [y/n] : ")
+        if kembali.upper() == "NO" or kembali.upper() == "N":
+            print("\tAnda Akan Kembali Ke Awal")
+            print("\tTunggu Sebentar ...")
+            time.sleep(2)
+            menu_awal()
+
+        elif kembali.upper() == "YES" or kembali.upper() == "Y":
+            print("\tTunggu Sebentar....")
+            time.sleep(1.5)
+            clear_screen()
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            print("\t\t\t\t\t         / [=[=[=[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]=]=]=] \ ")
+            print("\t\t\t\t\t        /   [=]------------------ SAMPAI JUMPA!! -------------------[=]   \ ")
+            print("\t\t\t\t\t       /     [=]----- TERIMA KASIH TELAH MENGGUNAKAN JASA INI -----[=]     \ ")
+            print("\t\t\t\t\t      / ______[=[=[=[=[=[=[=[=[=[=[=[=[=[=]=]=]=]=]=]=]=]=]=]=]=]=]=]_______\ ")
+            time.sleep(3)
+            print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            quit()
+
+        else:
+            print("\t\tInputan Anda Salah !!")
+            status+=1
+
+    else:
+        print("\n\tTerjadi Kesalahan",status,"Kali, Kembali Ke Awal")
+        Bergerak("\t\tTunggu Sebentar...")
+        time.sleep(1.5)
+        menu_awal()
+
+def sorting(PSPilihan,pilihanPS):
+    def mergesort(list0) :
+        if len(list0)>1:
+            mid = len(list0)//2
+            left_list = list0[:mid]
+            right_list = list0[mid:]
+            mergesort(left_list)
+            mergesort(right_list)
+            i=0
+            j=0
+            k=0
+            while i<len(left_list) and j<len(right_list):
+                if ascending:
+                    if left_list[i]<right_list[j]:
+                        list0[k] = left_list[i]
+                        i=i+1
+                        k=k+1
+                    else:
+                        list0[k] = right_list[j]
+                        j=j+1
+                        k=k+1
+                else:
+                    if left_list[i]>right_list[j]:
+                        list0[k] = left_list[i]
+                        i=i+1
+                        k=k+1
+                    else:
+                        list0[k] = right_list[j]
+                        j=j+1
+                        k=k+1
+            while i<len(left_list):
+                list0[k] = left_list[i]
+                i=i+1
+                k=k+1
+            while j<len(right_list):
+                list0[k] = right_list[j]
+                j=j+1
+                k=k+1
+    list1 = daftar_menu[PSPilihan]['game']
+    list_awal = list1.copy()
+    pilihansort = input("\t1. Ascending \n\t2. Descending \n\tMasukan Pilihan [1/2] = ")
+    ascending = True
+    mergesort(list1)
+    list_ascending = list1.copy()
+    list1 = list_awal.copy()
+    ascending = False
+    mergesort(list1)
+    list_descending = list1.copy()
+    print("\n\t[=[=[=[=[ LIST GAME {} ]=]=]=]=]".format(pilihanPS))
+    if pilihansort == '1':
+        for g in list_ascending:
+            print(f"\t- {g}")
+    elif pilihansort == '2':
+        for g in list_descending:
+            print(f"\t- {g}")
+
+def search():
+    def linearsearch(array, n, x):
+        isFound =  False
+        for i in range(0, n):
+            if (array[i] == x):
+                print("\n\tKaset",x,"Berada Dalam Index Ke : ",i)
+                isFound = True
+        if not(isFound == True):
+            return -1
+
+    print('\n\t============ DAFTAR PS/XBOX =============\n')
+    for PS,dataRENTAL in daftar_menu.items():
+        print(f"\t{PS}. {dataRENTAL['namaPS']}")
+    print('\n\t=========================================\n')
+    PSPilihan = int(input("\tPilih PS/XBOX yang anda ingin cari  kasetnya : [1/2/3/4/5] : "))
+    PSPilihan in list(daftar_menu.keys())
+    pilihanPS = daftar_menu[PSPilihan]['namaPS']
+    print("\n\t[=[=[=[=[ LIST GAME {} ]=]=]=]=]".format(pilihanPS))
+    for g in daftar_menu[PSPilihan]["game"]:
+        print(f"\t- {g}")
+    array = daftar_menu[PSPilihan]["game"]
+    x = str(input("\n\tMasukan Nama Kaset Yang Ingin Anda Cari : "))
+    n = len(array)
+    result = linearsearch(array, n,x)
+    if(result == -1):
+        print("\n\tKaset",x,"Tidak Ditemukan")
+    input("\n\tTekan enter untuk kembalil ke menu. . . .")
+    menuAdmin()
+
+def note():
+    def tambahcatatan():
+        try:
+            file = open("catatan.txt","a",encoding="utf-8")
+            print("\n\tInput Catatan Kamu Di Bawah")
+            data = input(": ")
+            file.write(data+"\n")
+        finally:
+            file.close()
+
+    def ubahcatatan():
+        datafile = tampilancatatan()
+        with open("catatan.txt","w",encoding="utf-8") as file:
+            posisi = int(input("\n\tUbah catatan di index ke : "))
+            print("\tMasukan Catatan Kamu Di Bawah")
+            databaru = input(": ")
+            datafile[posisi-1] = databaru + '\n'
+            file.writelines(datafile)
+
+    def hapuscatatan():
+        datafile = tampilancatatan()
+        with open("catatan.txt","w",encoding="utf-8") as file:
+            posisi = int(input("\n\tHapus Catatan Di Index Ke : "))
+            del datafile[posisi-1]
+            file.writelines(datafile)
+
+    def tampilancatatan():
+        file = open("catatan.txt","r",encoding="utf-8")
+        datareturn = file.readlines()
+        i=1
+        print("="*30)
+        print("Tampilan catatan")
+        print("="*30)
+        for line in datareturn:
+            print(str(i)+".",line,end= " ")
+            i+=1
+        print(30*"=")
+        input("Tekan enter untuk kembali Atau Melanjutkan")
+        return datareturn
+
+    while True:
+        clear_screen()
+        print("Menu Untuk Catatan")
+        print("1. Tambah data")
+        print("2. Ubah data")
+        print("3. Hapus data")
+        print("4. tampilkan data")
+        print("5. exit ")
+        pilih = input("Masukan Pilihan : ")
+        if pilih == "1":
+            tambahcatatan()
+        elif pilih == "2":
+            ubahcatatan()
+        elif pilih == "3":
+            hapuscatatan()
+        elif pilih == "4":
+            tampilancatatan()
+        elif pilih == "5":
+            menuAdmin()
+        else:
+            print("Inputan Anda Salah")
+
+menu_awal()
